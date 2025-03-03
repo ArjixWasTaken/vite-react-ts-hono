@@ -1,7 +1,18 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+    "files": [],
+    "compilerOptions": {
+        "outDir": "app"
+    },
+    "references": [
+        {
+            "path": "./src/frontend"
+        },
+        {
+            "path": "./src/backend"
+        }
+    ],
+    "tsc-alias": {
+        "verbose": false,
+        "resolveFullPaths": true
+    }
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { api } from "../api";
 
 export const useHello = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -9,7 +10,7 @@ export const useHello = () => {
         const abortController = new AbortController();
 
         setIsLoading(true);
-        fetch("/api/v1/hello", { signal: abortController.signal })
+        api.v1.hello.$get({ signal: abortController.signal })
             .then((response) => response.json())
             .then((data) => {
                 setHello(data);

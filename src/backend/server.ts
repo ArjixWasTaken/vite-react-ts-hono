@@ -21,19 +21,21 @@ window.__vite_plugin_react_preamble_installed__ = true
 </script>
 
     <script type="module" src="/@vite/client"></script>
-    `
+    `,
     );
 }
 
-const app = new Hono();
-
-app.route("/api", routes);
-app.get("/*", (c) => c.html(html));
+const app = new Hono()
+    .route("/api", routes)
+    .get("/*", (c) => c.html(html));
 
 export default app;
 
 if (isProd) {
-    serve({ ...app, port: 4000 }, (info) => {
+    serve({
+        fetch: app.fetch,
+        port: 4000,
+    }, (info) => {
         console.log(`Listening on http://localhost:${info.port}`);
     });
 }
